@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">ClubChamp</string>
+    <string name="login">Login</string>
+    <string name="pw_hint">password</string>
+    <string name="Rgung">Registrierung</string>
+
+
 </resources>

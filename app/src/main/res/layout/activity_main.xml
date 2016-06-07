@@ -7,10 +7,62 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="fh_muenster.clubchamp.MainActivity">
+    tools:context="fh_muenster.clubchamp.MainActivity"
+    android:scrollIndicators="start|end">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:id="@+id/email_login"
+        android:layout_marginTop="32dp"
+        android:editable="false"
+        android:hint="E-Mail"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/pw_login"
+        android:hint="@string/pw_hint"
+        android:layout_below="@+id/email_login"
+        android:layout_alignStart="@+id/email_login"
+        android:layout_marginTop="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/login"
+        android:id="@+id/textView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:gravity="center"
+        android:textSize="40sp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="einloggen"
+        android:id="@+id/button_login"
+        android:clickable="true"
+
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/pw_login" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Registrieren"
+        android:id="@+id/button_Regis"
+        android:clickable="false"
+
+        android:layout_alignTop="@+id/button_login"
+        android:layout_toStartOf="@+id/button_login" />
+
 </RelativeLayout>
