@@ -37,7 +37,25 @@
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/editText"
+        android:hint="@string/pw_hint"
+        android:layout_below="@+id/editText2"
+        android:layout_alignStart="@+id/editText2" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="registrieren"
+        android:id="@+id/button_registrieren"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/editText2"
         android:layout_below="@+id/email_regis"
         android:layout_centerHorizontal="true"
-        android:hint="@string/pw_hint" />
+        android:hint="Username" />
 </RelativeLayout>

@@ -3,6 +3,7 @@
     <string name="login">Login</string>
     <string name="pw_hint">password</string>
     <string name="Rgung">Registrierung</string>
+    <string name="regis">registrieren</string>
 
 
 </resources>

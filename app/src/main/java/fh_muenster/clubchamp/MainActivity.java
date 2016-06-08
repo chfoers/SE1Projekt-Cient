@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 
@@ -47,12 +48,27 @@ public class MainActivity extends AppCompatActivity {
     public void setupLogin(){
         Button login = (Button) findViewById(R.id.button_login);
 
+
         login.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v){
-                Toast.makeText(MainActivity.this,"Logged in", Toast.LENGTH_LONG).show();
-                startActivity(new Intent(MainActivity.this, Musikwunsch.class));
+                EditText emailLogin = (EditText) findViewById(R.id.email_login);
+                EditText pwLogin = (EditText) findViewById(R.id.pw_login);
+
+                if( emailLogin.getText().toString().equals("")){
+                    Toast.makeText(MainActivity.this,"Login failed", Toast.LENGTH_LONG).show();
+
+                }
+                else{
+                    if( pwLogin.getText().toString().equals("")){
+                        Toast.makeText(MainActivity.this,"Login failed", Toast.LENGTH_LONG).show();
+                    }
+                    else{
+                        Toast.makeText(MainActivity.this,"Login successed", Toast.LENGTH_LONG).show();
+                        startActivity(new Intent(MainActivity.this, Musikwunsch.class));
+                    }
+                }
 
             }
 
