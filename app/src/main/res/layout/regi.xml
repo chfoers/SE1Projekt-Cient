@@ -36,10 +36,10 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
-        android:id="@+id/editText"
+        android:id="@+id/regiPW"
         android:hint="@string/pw_hint"
-        android:layout_below="@+id/editText2"
-        android:layout_alignStart="@+id/editText2" />
+        android:layout_below="@+id/regiUser"
+        android:layout_alignStart="@+id/regiUser" />
 
     <Button
         android:layout_width="wrap_content"
@@ -54,7 +54,7 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/editText2"
+        android:id="@+id/regiUser"
         android:layout_below="@+id/email_regis"
         android:layout_centerHorizontal="true"
         android:hint="Username" />
