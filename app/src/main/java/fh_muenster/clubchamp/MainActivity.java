@@ -78,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
                     task.execute();
                     //If text control is empty
                     Toast.makeText(MainActivity.this,"Login successed", Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(MainActivity.this, Musikwunsch.class));
                 } else {
 
                     Toast.makeText(MainActivity.this,"Login failed", Toast.LENGTH_LONG).show();

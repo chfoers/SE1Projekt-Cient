@@ -27,15 +27,13 @@
         android:layout_centerHorizontal="true"
         android:hint="Hier Wunsch eintragen" />
 
-    <ListView
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/listView"
-        android:layout_below="@+id/wunsch"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@+id/button_wunsch"
-        android:smoothScrollbar="true"
-        tools:listitem="@android:layout/simple_list_item_multiple_choice" />
+        android:text="Logout"
+        android:id="@+id/button_Logout"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/button_wabgeben" />
 
     <Button
         android:layout_width="wrap_content"
@@ -45,12 +43,13 @@
         android:layout_alignParentBottom="true"
         android:layout_toEndOf="@+id/button_wunsch" />
 
-    <Button
-        android:layout_width="wrap_content"
+    <ListView
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Logout"
-        android:id="@+id/button_Logout"
-        android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/button_wabgeben" />
+        android:id="@+id/lvw"
+        android:layout_below="@+id/wunsch"
+        tools:listitem="@android:layout/simple_list_item_multiple_choice"
+        android:layout_alignEnd="@+id/wunsch"
+        android:layout_above="@+id/button_wunsch" />
 
 </RelativeLayout>
