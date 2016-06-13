@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) throws Exception{
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         AQLClubChampWebServiceServiceSoapBinding service = new AQLClubChampWebServiceServiceSoapBinding();
@@ -37,8 +37,9 @@ public class MainActivity extends AppCompatActivity {
         emailLogin = (EditText) findViewById(R.id.email_login);
         pwLogin = (EditText) findViewById(R.id.pw_login);
         b = (Button) findViewById(R.id.button_login);
-
-        setupLogin();
+        try{
+        setupLogin();}
+        catch (Exception e){}
     }
 
     /*@Override
@@ -78,7 +79,8 @@ public class MainActivity extends AppCompatActivity {
                     email = emailLogin.getText().toString();
                     //Create instance for AsyncCallWS
                     AQLClubChampWebServiceServiceSoapBinding service = new AQLClubChampWebServiceServiceSoapBinding();
-                    service.login(emailLogin.getText().toString(),pwLogin.getText().toString());
+                    try{service.loginAsync(emailLogin.getText().toString(),pwLogin.getText().toString());}
+                    catch (Exception e){}
                     Toast.makeText(MainActivity.this,"Login successed", Toast.LENGTH_LONG).show();
                     startActivity(new Intent(MainActivity.this, Musikwunsch.class));
                 } else {

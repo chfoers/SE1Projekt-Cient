@@ -392,7 +392,7 @@ public class AQLClubChampWebServiceServiceSoapBinding
     }
 
 
-    public String toString( ) throws Exception
+    public String toStr( ) throws Exception
     {
         return (String)execute(new AQLIWcfMethod()
         {
@@ -427,7 +427,7 @@ public class AQLClubChampWebServiceServiceSoapBinding
     {
         return executeAsync(new AQLFunctions.IFunc< String>() {
             public String Func() throws Exception {
-                return toString( );
+                return toStr( );
             }
         });
     }
