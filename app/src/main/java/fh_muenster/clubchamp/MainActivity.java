@@ -12,6 +12,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import fh_muenster.webservices.AQLClubChampWebServiceServiceSoapBinding;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,9 +26,11 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) throws Exception{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        AQLClubChampWebServiceServiceSoapBinding service = new AQLClubChampWebServiceServiceSoapBinding();
+
         setupRegi();
 
 
@@ -59,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void setupLogin() {
+    public void setupLogin()throws Exception{
 
 
 
@@ -73,10 +77,8 @@ public class MainActivity extends AppCompatActivity {
                     //Get the text control value
                     email = emailLogin.getText().toString();
                     //Create instance for AsyncCallWS
-                    AsyncCallWS task = new AsyncCallWS();
-                    //Call execute
-                    task.execute();
-                    //If text control is empty
+                    AQLClubChampWebServiceServiceSoapBinding service = new AQLClubChampWebServiceServiceSoapBinding();
+                    service.login(emailLogin.getText().toString(),pwLogin.getText().toString());
                     Toast.makeText(MainActivity.this,"Login successed", Toast.LENGTH_LONG).show();
                     startActivity(new Intent(MainActivity.this, Musikwunsch.class));
                 } else {
@@ -89,35 +91,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    /**
-     * Created by user on 09.06.16.
-     */
-    public class AsyncCallWS extends AsyncTask<String, Void, Void> {
-        @Override
-        protected Void doInBackground(String... params) {
-            //Invoke webservice
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void result) {
-            //Set response
-
-
-
-        }
-
-        @Override
-        protected void onPreExecute() {
-
-        }
-
-        @Override
-        protected void onProgressUpdate(Void... values) {
-        }
-
-    }
 }
 
 
