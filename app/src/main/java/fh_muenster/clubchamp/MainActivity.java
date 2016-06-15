@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,30 +14,29 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import fh_muenster.webservices.AQLClubChampWebServiceServiceSoapBinding;
+import fh_muenster.webservices.AQLIServiceEvents;
+import fh_muenster.webservices.AQLOperationResult;
 
 
 public class MainActivity extends AppCompatActivity {
 
     EditText emailLogin;
     EditText pwLogin;
+    String sessionId;
     Button b;
 
-
-    String email;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        AQLClubChampWebServiceServiceSoapBinding service = new AQLClubChampWebServiceServiceSoapBinding();
-
         setupRegi();
-
-
         emailLogin = (EditText) findViewById(R.id.email_login);
         pwLogin = (EditText) findViewById(R.id.pw_login);
         b = (Button) findViewById(R.id.button_login);
+
+
         try{
         setupLogin();}
         catch (Exception e){}
@@ -75,14 +75,30 @@ public class MainActivity extends AppCompatActivity {
 
 
                 if (emailLogin.getText().length() != 0 && emailLogin.getText().toString() != "" && pwLogin.getText().toString() != "" && pwLogin.getText().length() != 0) {
+
+                    /*String email = emailLogin.getText().toString();
+                    String password = pwLogin.getText().toString();
+                    AQLClubChampWebServiceServiceSoapBinding service = new AQLClubChampWebServiceServiceSoapBinding(new AQLIServiceEvents() {
+
+                        @Override
+                        public void Starting() {
+
+                        }
+
+                        @Override
+                        public void Completed(AQLOperationResult result) {
+                        String res = (String)result.Result;
+                        }
+                    },"http://10.0.2.2:8080/ClubChamp-System-ejb-0.0.1/ClubChampWebService");
+                    service.loginAsync (email,password);
+                    */
                     //Get the text control value
-                    email = emailLogin.getText().toString();
+                    //AQLClubChampWebServiceServiceSoapBinding service = new AQLClubChampWebServiceServiceSoapBinding();
+                    //service.loginAsync(emailLogin.getText().toString(),pwLogin.getText().toString());
                     //Create instance for AsyncCallWS
-                    AQLClubChampWebServiceServiceSoapBinding service = new AQLClubChampWebServiceServiceSoapBinding();
-                    try{service.loginAsync(emailLogin.getText().toString(),pwLogin.getText().toString());}
-                    catch (Exception e){}
-                    Toast.makeText(MainActivity.this,"Login successed", Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(MainActivity.this, Musikwunsch.class));
+                    new LoginAsync().execute();
+                    //Toast.makeText(MainActivity.this,"Login successed", Toast.LENGTH_LONG).show();
+                    //startActivity(new Intent(MainActivity.this, Musikwunsch.class));
                 } else {
 
                     Toast.makeText(MainActivity.this,"Login failed", Toast.LENGTH_LONG).show();
@@ -92,7 +108,59 @@ public class MainActivity extends AppCompatActivity {
 
         });
     }
+    class LoginAsync extends AsyncTask<String, String, String> {
 
+        private String email = emailLogin.getText().toString();
+        private String password = pwLogin.getText().toString();
+        /*AQLClubChampWebServiceServiceSoapBinding service = new AQLClubChampWebServiceServiceSoapBinding(new AQLIServiceEvents() {
+
+            @Override
+            public void Starting() {
+
+            }
+
+            @Override
+            public void Completed(AQLOperationResult result) {
+                String res = (String) result.Result;
+            }
+        }, "http://10.0.2.2:8080/ClubChamp-System-ejb-0.0.1/ClubChampWebService");
+        */
+        @Override
+        protected void onPreExecute() {
+
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+            try {
+                AQLClubChampWebServiceServiceSoapBinding service = new AQLClubChampWebServiceServiceSoapBinding();
+                try {
+                    return service.login(email, password);
+
+                } catch (Exception e) {
+                    return " ";
+                }
+            }
+
+
+        catch(Exception e){return " ";
+        }
+    }
+
+
+        protected void onPostExecute(String result) {
+            Log.i("LOG: ", result);
+            if(result.equals(" ")){
+
+                Toast.makeText(MainActivity.this,"Login failed", Toast.LENGTH_LONG).show();
+            }
+            else {
+                sessionId = result;
+                Toast.makeText(MainActivity.this,"Login successed", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(MainActivity.this, Musikwunsch.class));
+            }
+        }
+    }
 }
 
 

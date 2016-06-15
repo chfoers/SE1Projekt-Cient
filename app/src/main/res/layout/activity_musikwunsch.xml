@@ -12,8 +12,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Wunsch Voten"
-        android:id="@+id/button_wunsch"
+        android:text="Voten"
+        android:id="@+id/button_vote"
         android:layout_row="0"
         android:layout_column="9"
         android:layout_alignParentBottom="true"
@@ -23,9 +23,9 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/wunsch"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:hint="Hier Wunsch eintragen" />
+        android:hint="Hier Wunsch eintragen"
+        android:layout_below="@+id/tvWunschliste"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -41,7 +41,7 @@
         android:text="abgeben"
         android:id="@+id/button_wabgeben"
         android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/button_wunsch" />
+        android:layout_toEndOf="@+id/button_vote" />
 
     <ListView
         android:layout_width="fill_parent"
@@ -50,6 +50,33 @@
         android:layout_below="@+id/wunsch"
         tools:listitem="@android:layout/simple_list_item_multiple_choice"
         android:layout_alignEnd="@+id/wunsch"
-        android:layout_above="@+id/button_wunsch" />
+        android:layout_above="@+id/button_vote" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Wunschliste"
+        android:id="@+id/tvWunschliste"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:gravity="center" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Username"
+        android:id="@+id/tvUser"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/button"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/button_Logout" />
 
 </RelativeLayout>

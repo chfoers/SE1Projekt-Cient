@@ -4,11 +4,15 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Adapter;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,14 +32,23 @@ public class Musikwunsch extends AppCompatActivity {
         arrayList = new ArrayList<>(Arrays.asList(items));
         adapter=new ArrayAdapter<String>(this, R.layout.activity_musikliste, R.id.txtv, arrayList);
         wuensche.setAdapter(adapter);
-       setupWunsch();
+
+        TextView use = (TextView) findViewById(R.id.tvUser);
+
+
+        use.setText("ICH BIN GEIL");
+      //TextView usern = (TextView) findViewById(R.id.tvEmail);
+        //TextView usN = (TextView) findViewById(R.id.tvUser);
+
+        //usN.setText(usern.getText().toString());
+        setupWunsch();
     }
 
     public void setupWunsch() {
         Button wunsch = (Button) findViewById(R.id.button_wabgeben);
 
 
-        View.OnClickListener myListener = new View.OnClickListener() {
+        OnClickListener myListener = new OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -51,4 +64,19 @@ public class Musikwunsch extends AppCompatActivity {
         wunsch.setOnClickListener(myListener);
 
     }
+
+    public void setupLogout(){
+        Button logout = (Button) findViewById(R.id.button_Logout);
+
+        OnClickListener myListener = new OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+
+
+            }
+        };
+
+    }
+
 }
