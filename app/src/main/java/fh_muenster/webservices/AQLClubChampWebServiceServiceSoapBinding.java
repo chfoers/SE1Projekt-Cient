@@ -460,9 +460,39 @@ public class AQLClubChampWebServiceServiceSoapBinding
     }
     
     public String logout(final String arg0 ) throws Exception
+    {   return (String)execute(new AQLIWcfMethod()
     {
-/*This feature is available in Premium account, Check http://EasyWsdl.com/Payment/PremiumAccountDetails to see all benefits of Premium account*/
-        return null;    
+        @Override
+        public AQLExtendedSoapSerializationEnvelope CreateSoapEnvelope(){
+            AQLExtendedSoapSerializationEnvelope __envelope = createEnvelope();
+            SoapObject __soapReq = new SoapObject("http://clubchamp.gruppe10/", "logout");
+            __envelope.setOutputSoapObject(__soapReq);
+
+            PropertyInfo __info=null;
+            __info = new PropertyInfo();
+            __info.namespace="";
+            __info.name="arg0";
+            __info.type=PropertyInfo.STRING_CLASS;
+            __info.setValue(arg0!=null?arg0:SoapPrimitive.NullSkip);
+            __soapReq.addProperty(__info);
+            return __envelope;
+        }
+
+        @Override
+        public Object ProcessResult(AQLExtendedSoapSerializationEnvelope __envelope,Object __result)throws Exception {
+            SoapObject __soap=(SoapObject)__result;
+            Object obj = __soap.getProperty("return");
+            if (obj != null && obj.getClass().equals(SoapPrimitive.class))
+            {
+                SoapPrimitive j =(SoapPrimitive) obj;
+                return j.toString();
+            }
+            else if (obj!= null && obj instanceof String){
+                return (String)obj;
+            }
+            return null;
+        }
+    },"");
     }
     
     public android.os.AsyncTask< Void, Void, AQLOperationResult< String>> logoutAsync(final String arg0)

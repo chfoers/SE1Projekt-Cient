@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditTextPreference android:key="Username"
+        android:title="titleUsername"/>
+    <EditTextPreference android:key="Email"
+        android:title="titleEmail"/>
+    <EditTextPreference android:key="Passwort"
+        android:title="titlePw"/>
+    <EditTextPreference android:key="Session"
+        android:title="titleSession"/>
+
+</PreferenceScreen>

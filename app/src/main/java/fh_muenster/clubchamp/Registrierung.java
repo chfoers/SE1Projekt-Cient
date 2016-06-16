@@ -1,6 +1,7 @@
 package fh_muenster.clubchamp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +19,9 @@ public class Registrierung extends AppCompatActivity {
     EditText regiUser;
     EditText regiPW;
     Button b;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +47,9 @@ public class Registrierung extends AppCompatActivity {
                 if (regiEmail.getText().length() != 0 && regiEmail.getText().toString() != "" &&
                         regiUser.getText().toString() != "" && regiUser.getText().length() != 0 &&
                         regiPW.getText().toString() != "" && regiPW.getText().length() != 0){
+
                     new RegiAsync().execute();
+
                 }
                 else{
                     Toast.makeText(Registrierung.this,"Bitte füll alle Felder aus", Toast.LENGTH_LONG).show();
@@ -54,35 +60,15 @@ public class Registrierung extends AppCompatActivity {
 
 
     }
-  /*  @Override
-    protected void onResume(){
-        super.onResume();
-        setContentView(R.layout.activity_musikwunsch);
-    }
 
-    @Override
-    protected void onPause(){
-        super.onPause();
-        setContentView(R.layout.activity_main);
-    }
-    */class RegiAsync extends AsyncTask<String, String, String> {
+  class RegiAsync extends AsyncTask<String, String, String> {
 
       private String regiMail = regiEmail.getText().toString();
       private String regiUse = regiUser.getText().toString();
       private String regiPas = regiPW.getText().toString();
-      /*AQLClubChampWebServiceServiceSoapBinding service = new AQLClubChampWebServiceServiceSoapBinding(new AQLIServiceEvents() {
 
-          @Override
-          public void Starting() {
 
-          }
 
-          @Override
-          public void Completed(AQLOperationResult result) {
-              String res = (String) result.Result;
-          }
-      }, "http://10.0.2.2:8080/ClubChamp-System-ejb-0.0.1/ClubChampWebService");
-      */
       @Override
       protected void onPreExecute() {
 
@@ -112,12 +98,16 @@ public class Registrierung extends AppCompatActivity {
           Log.i("LOG: ", result);
           if(result.equals(" ")){
 
-              Toast.makeText(Registrierung.this,"Login failed", Toast.LENGTH_LONG).show();
+              Toast.makeText(Registrierung.this,"Registrierung fehlgeschlagen", Toast.LENGTH_LONG).show();
           }
           else {
+              //editor.putString("Email", regiEmail.getText().toString());
+              //editor.putString("Username", regiUser.getText().toString());
+              //editor.putString("Password", regiPW.getText().toString());
 
               Toast.makeText(Registrierung.this, "Registrierung erfolgreich", Toast.LENGTH_LONG).show();
               startActivity(new Intent(Registrierung.this, Musikwunsch.class));
+              finish();
           }
       }
   }

@@ -12,7 +12,6 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Username"
         android:id="@+id/tvUsername"
         android:textSize="20dp"
         android:layout_alignParentTop="true"
@@ -22,7 +21,6 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Hannes"
         android:id="@+id/tvEmail"
         android:textSize="20dp"
         android:layout_below="@+id/tvUsername"
@@ -35,6 +33,7 @@
         android:id="@+id/textView3"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="User Seite" />
+        android:text="Profil"
+        android:textSize="30dp" />
 
 </RelativeLayout>

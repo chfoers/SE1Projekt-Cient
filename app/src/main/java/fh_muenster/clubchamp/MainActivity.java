@@ -2,6 +2,7 @@ package fh_muenster.clubchamp;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     String sessionId;
     Button b;
 
+    SharedPreferences pref;
 
 
     @Override
@@ -35,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         emailLogin = (EditText) findViewById(R.id.email_login);
         pwLogin = (EditText) findViewById(R.id.pw_login);
         b = (Button) findViewById(R.id.button_login);
-
+        pref = getApplication().getSharedPreferences("shared_preferences", 0);
 
         try{
         setupLogin();}
@@ -57,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, Registrierung.class));
+
             }
 
         };
@@ -76,29 +79,9 @@ public class MainActivity extends AppCompatActivity {
 
                 if (emailLogin.getText().length() != 0 && emailLogin.getText().toString() != "" && pwLogin.getText().toString() != "" && pwLogin.getText().length() != 0) {
 
-                    /*String email = emailLogin.getText().toString();
-                    String password = pwLogin.getText().toString();
-                    AQLClubChampWebServiceServiceSoapBinding service = new AQLClubChampWebServiceServiceSoapBinding(new AQLIServiceEvents() {
 
-                        @Override
-                        public void Starting() {
-
-                        }
-
-                        @Override
-                        public void Completed(AQLOperationResult result) {
-                        String res = (String)result.Result;
-                        }
-                    },"http://10.0.2.2:8080/ClubChamp-System-ejb-0.0.1/ClubChampWebService");
-                    service.loginAsync (email,password);
-                    */
-                    //Get the text control value
-                    //AQLClubChampWebServiceServiceSoapBinding service = new AQLClubChampWebServiceServiceSoapBinding();
-                    //service.loginAsync(emailLogin.getText().toString(),pwLogin.getText().toString());
-                    //Create instance for AsyncCallWS
                     new LoginAsync().execute();
-                    //Toast.makeText(MainActivity.this,"Login successed", Toast.LENGTH_LONG).show();
-                    //startActivity(new Intent(MainActivity.this, Musikwunsch.class));
+
                 } else {
 
                     Toast.makeText(MainActivity.this,"Login failed", Toast.LENGTH_LONG).show();
@@ -155,9 +138,16 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this,"Login failed", Toast.LENGTH_LONG).show();
             }
             else {
+                SharedPreferences.Editor editor = pref.edit();
                 sessionId = result;
+                editor.putString("Email", emailLogin.getText().toString());
+                //editor.putString("Username", regiUser.getText().toString());
+                editor.putString("Password", pwLogin.getText().toString());
+                editor.putString("Session",sessionId);
+                editor.commit();
                 Toast.makeText(MainActivity.this,"Login successed", Toast.LENGTH_LONG).show();
                 startActivity(new Intent(MainActivity.this, Musikwunsch.class));
+                finish();
             }
         }
     }
