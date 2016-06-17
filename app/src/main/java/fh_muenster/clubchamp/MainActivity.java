@@ -95,19 +95,7 @@ public class MainActivity extends AppCompatActivity {
 
         private String email = emailLogin.getText().toString();
         private String password = pwLogin.getText().toString();
-        /*AQLClubChampWebServiceServiceSoapBinding service = new AQLClubChampWebServiceServiceSoapBinding(new AQLIServiceEvents() {
 
-            @Override
-            public void Starting() {
-
-            }
-
-            @Override
-            public void Completed(AQLOperationResult result) {
-                String res = (String) result.Result;
-            }
-        }, "http://10.0.2.2:8080/ClubChamp-System-ejb-0.0.1/ClubChampWebService");
-        */
         @Override
         protected void onPreExecute() {
 
@@ -141,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = pref.edit();
                 sessionId = result;
                 editor.putString("Email", emailLogin.getText().toString());
-                //editor.putString("Username", regiUser.getText().toString());
+
                 editor.putString("Password", pwLogin.getText().toString());
                 editor.putString("Session",sessionId);
                 editor.commit();
