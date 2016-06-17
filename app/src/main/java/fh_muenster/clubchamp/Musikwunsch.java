@@ -10,15 +10,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.RatingBar;
 import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 import fh_muenster.webservices.AQLClubChampWebServiceServiceSoapBinding;
 
@@ -28,7 +23,7 @@ public class Musikwunsch extends AppCompatActivity {
    // private ArrayAdapter<String> adapter;
     EditText lied;
     EditText inter;
-
+    int r;
     SharedPreferences pref;
 
     @Override
@@ -37,6 +32,10 @@ public class Musikwunsch extends AppCompatActivity {
         setContentView(R.layout.activity_musikwunsch);
         lied = (EditText) findViewById(R.id.wunsch);
         inter = (EditText) findViewById(R.id.etInterpret);
+        RatingBar ratB = (RatingBar) findViewById(R.id.rb);
+        r = ratB.getNumStars();
+        new RatingAsync().execute();
+
         //ListView wuensche = (ListView) findViewById(R.id.lvw);
         //String[] items = {"Test1","Test2","Test3"};
         //arrayList = new ArrayList<>(Arrays.asList(items));
@@ -93,11 +92,6 @@ public class Musikwunsch extends AppCompatActivity {
 
 
                 }
-                //EditText wun = (EditText) findViewById(R.id.wunsch);
-                //String wu = wun.getText().toString();
-                //arrayList.add(wu);
-                //adapter.notifyDataSetChanged();
-                //wun.setText("");
 
             }
 
@@ -105,6 +99,7 @@ public class Musikwunsch extends AppCompatActivity {
         wunsch.setOnClickListener(myListener);
 
     }
+
 
     class LogoutAsync extends AsyncTask<String, String, String> {
 
@@ -147,7 +142,39 @@ public class Musikwunsch extends AppCompatActivity {
             }
         }
     }
+    class RatingAsync extends AsyncTask<Void, Void, Void> {
 
+        @Override
+        protected void onPreExecute() {
+
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            try {
+                AQLClubChampWebServiceServiceSoapBinding service = new AQLClubChampWebServiceServiceSoapBinding();
+                try {
+                    service.clubBewerten( pref.getString("Session",null), r);
+
+
+                } catch (Exception e) {
+                    return null;
+                }
+            }
+
+
+            catch(Exception e){
+                return null;
+            }
+            return null;
+        }
+
+
+        protected void onPostExecute(Void result) {
+
+
+        }
+    }
     class WunschAsync extends AsyncTask<String, String, String> {
 
         private String l = lied.getText().toString();
@@ -192,4 +219,5 @@ public class Musikwunsch extends AppCompatActivity {
             }
         }
     }
+
 }

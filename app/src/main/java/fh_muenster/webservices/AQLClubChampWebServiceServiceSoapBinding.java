@@ -441,18 +441,46 @@ public class AQLClubChampWebServiceServiceSoapBinding
             }
         });
     }
-    
-    public void clubBewerten(final String arg0,final String arg1 ) throws Exception
+
+    public void clubBewerten(final String arg0,final Integer arg1 ) throws java.lang.Exception
     {
-/*This feature is available in Premium account, Check http://EasyWsdl.com/Payment/PremiumAccountDetails to see all benefits of Premium account*/
+        execute(new AQLIWcfMethod()
+        {
+            @Override
+            public AQLExtendedSoapSerializationEnvelope CreateSoapEnvelope(){
+                AQLExtendedSoapSerializationEnvelope __envelope = createEnvelope();
+                SoapObject __soapReq = new SoapObject("http://clubchamp.gruppe10/", "clubBewerten");
+                __envelope.setOutputSoapObject(__soapReq);
+
+                PropertyInfo __info=null;
+                __info = new PropertyInfo();
+                __info.namespace="";
+                __info.name="arg0";
+                __info.type=PropertyInfo.STRING_CLASS;
+                __info.setValue(arg0!=null?arg0:SoapPrimitive.NullSkip);
+                __soapReq.addProperty(__info);
+                __info = new PropertyInfo();
+                __info.namespace="";
+                __info.name="arg1";
+                __info.type=PropertyInfo.INTEGER_CLASS;
+                __info.setValue(arg1);
+                __soapReq.addProperty(__info);
+                return __envelope;
+            }
+
+            @Override
+            public java.lang.Object ProcessResult(AQLExtendedSoapSerializationEnvelope __envelope,java.lang.Object __result)throws java.lang.Exception {
+                return null;
+            }
+        },"");
     }
-    
-    public android.os.AsyncTask< Void, Void, AQLOperationResult< Void>> clubBewertenAsync(final String arg0,final String arg1)
+
+    public android.os.AsyncTask< Void, Void, AQLOperationResult< Void>> clubBewertenAsync(final String arg0,final Integer arg1)
     {
         return executeAsync(new AQLFunctions.IFunc< Void>()
         {
             @Override
-            public Void Func() throws Exception {
+            public Void Func() throws java.lang.Exception {
                 clubBewerten( arg0,arg1);
                 return null;
             }

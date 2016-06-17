@@ -34,7 +34,8 @@
         android:id="@+id/tvWunschliste"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:gravity="center" />
+        android:gravity="center"
+        android:textSize="25dp" />
 
     <EditText
         android:layout_width="fill_parent"
@@ -42,6 +43,25 @@
         android:id="@+id/etInterpret"
         android:hint="Interpret"
         android:layout_below="@+id/wunsch"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Club Bewerten"
+        android:id="@+id/textView4"
+        android:textSize="25dp"
+        android:layout_above="@+id/rb"
+        android:layout_alignParentStart="true" />
+
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rb"
+        android:rating="0"
+        android:stepSize="1"
+        android:layout_above="@+id/button_wabgeben"
         android:layout_alignParentStart="true" />
 
 </RelativeLayout>
