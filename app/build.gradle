@@ -20,6 +20,10 @@ android {
             maven { url 'https://oss.sonatype.org/content/repositories/ksoap2-android-releases/' }
         }
     }
+
+    lintOptions{
+        abortOnError false
+    }
 }
 
 dependencies {
