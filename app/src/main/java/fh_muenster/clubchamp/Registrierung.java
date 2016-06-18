@@ -22,6 +22,7 @@ public class Registrierung extends AppCompatActivity {
     EditText regiUser;
     EditText regiPW;
     Button b;
+    String SessionId;
 
 
     /**
@@ -37,6 +38,7 @@ public class Registrierung extends AppCompatActivity {
         regiUser = (EditText) findViewById(R.id.regiUser);
         regiPW = (EditText) findViewById(R.id.regiPW);
         b = (Button) findViewById(R.id.button_registrieren);
+
 
         setupRegi();
     }
@@ -127,9 +129,71 @@ public class Registrierung extends AppCompatActivity {
               //editor.putString("Password", regiPW.getText().toString());
 
               Toast.makeText(Registrierung.this, "Registrierung erfolgreich", Toast.LENGTH_LONG).show();
-              startActivity(new Intent(Registrierung.this, Musikwunsch.class));
+              new LoginAsync().execute();
               finish();
           }
       }
   }
+
+    /**
+     * @author Carlo Eefting
+     */
+    class LoginAsync extends AsyncTask<String, String, String> {
+
+        private String email = regiEmail.getText().toString();
+        private String password = regiPW.getText().toString();
+
+        @Override
+        protected void onPreExecute() {
+
+        }
+
+        /**
+         *
+         * @param strings
+         * @return
+         */
+        @Override
+        protected String doInBackground(String... strings) {
+            try {
+                AQLClubChampWebServiceServiceSoapBinding service = new AQLClubChampWebServiceServiceSoapBinding();
+                try {
+                    return service.login(email, password);
+
+                } catch (Exception e) {
+                    return " ";
+                }
+            }
+
+
+            catch(Exception e){return " ";
+            }
+        }
+
+        /**
+         *
+         * @param result
+         */
+        protected void onPostExecute(String result) {
+            Log.i("LOG: ", result);
+            if(result.equals(" ")){
+
+                Toast.makeText(Registrierung.this,"Login failed", Toast.LENGTH_LONG).show();
+            }
+            else {
+                String sessionId;
+                SharedPreferences pref;
+                pref = getApplication().getSharedPreferences("shared_preferences", 0);
+                SharedPreferences.Editor editor = pref.edit();
+                sessionId = result;
+                editor.putString("Email", regiEmail.getText().toString());
+                editor.putString("Password", regiPW.getText().toString());
+                editor.putString("Session",sessionId);
+                editor.commit();
+                Toast.makeText(Registrierung.this,"Login successed", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(Registrierung.this, Musikwunsch.class));
+                finish();
+            }
+        }
+    }
 }
