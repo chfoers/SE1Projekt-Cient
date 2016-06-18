@@ -21,6 +21,9 @@ import java.util.Arrays;
 import fh_muenster.webservices.AQLClubChampWebServiceServiceSoapBinding;
 import fh_muenster.webservices.AQLmusikWuenscheAusgebenResponse;
 
+/**
+ * @author Carlo Eefting
+ */
 public class Musikliste extends AppCompatActivity {
 
     SharedPreferences pref;
@@ -28,7 +31,10 @@ public class Musikliste extends AppCompatActivity {
     private ArrayList<String> arrayList;
     private ArrayAdapter<String> adapter;
 
-
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,17 +68,30 @@ public class Musikliste extends AppCompatActivity {
         });
     }
 */
+
+    /**
+     *
+     *
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menumain, menu);
         return true;
     }
 
+    /**
+     *
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.item1:
                 new LogoutAsync().execute();
+                finish();
 
 
                 break;
@@ -129,6 +148,10 @@ public class Musikliste extends AppCompatActivity {
 
         }
     }*/
+
+    /**
+     * @author Carlo Eefting
+     */
     class WuenscheAusgebenAsync extends AsyncTask<Void, String, String> {
 
 
@@ -137,6 +160,11 @@ public class Musikliste extends AppCompatActivity {
 
         }
 
+        /**
+         *
+         * @param strings
+         * @return
+         */
         @Override
         protected String doInBackground(Void... strings) {
 
@@ -156,6 +184,10 @@ public class Musikliste extends AppCompatActivity {
 
         }
 
+        /**
+         *
+         * @param result
+         */
 
         protected void onPostExecute(String result) {
 
@@ -164,11 +196,16 @@ public class Musikliste extends AppCompatActivity {
 
             } else {
                 dMusic(result);
+                adapter.notifyDataSetChanged();
             }
 
 
         }
 
+        /**
+         *
+         * @param result
+         */
         private void dMusic(String result) {
             String[] re = result.split(", Music ");
 
@@ -180,6 +217,9 @@ public class Musikliste extends AppCompatActivity {
         }
     }
 
+    /**
+     * @author Carlo Eefting
+     */
 
     class LogoutAsync extends AsyncTask<String, String, String> {
 
@@ -188,6 +228,11 @@ public class Musikliste extends AppCompatActivity {
 
         }
 
+        /**
+         *
+         * @param strings
+         * @return
+         */
         @Override
         protected String doInBackground(String... strings) {
             try {
@@ -203,7 +248,10 @@ public class Musikliste extends AppCompatActivity {
             }
         }
 
-
+        /**
+         *
+         * @param result
+         */
         protected void onPostExecute(String result) {
             Log.i("LOG: ", result);
             if (result.equals(" ")) {

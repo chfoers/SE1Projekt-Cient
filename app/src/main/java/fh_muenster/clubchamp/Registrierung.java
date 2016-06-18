@@ -13,6 +13,9 @@ import android.widget.Toast;
 
 import fh_muenster.webservices.AQLClubChampWebServiceServiceSoapBinding;
 
+/**
+ * @author Carlo Eefting
+ */
 public class Registrierung extends AppCompatActivity {
 
     EditText regiEmail;
@@ -21,6 +24,10 @@ public class Registrierung extends AppCompatActivity {
     Button b;
 
 
+    /**
+     *
+     * @param savedInstanceState
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +41,9 @@ public class Registrierung extends AppCompatActivity {
         setupRegi();
     }
 
+    /**
+     *
+     */
     public void setupRegi() {
 
 
@@ -61,6 +71,9 @@ public class Registrierung extends AppCompatActivity {
 
     }
 
+    /**
+     * @author Carlo Eefting
+     */
   class RegiAsync extends AsyncTask<String, String, String> {
 
       private String regiMail = regiEmail.getText().toString();
@@ -74,6 +87,11 @@ public class Registrierung extends AppCompatActivity {
 
       }
 
+        /**
+         *
+         * @param strings
+         * @return
+         */
       @Override
       protected String doInBackground(String... strings) {
           try {
@@ -93,7 +111,10 @@ public class Registrierung extends AppCompatActivity {
           }
       }
 
-
+        /**
+         *
+         * @param result
+         */
       protected void onPostExecute(String result) {
           Log.i("LOG: ", result);
           if(result.equals(" ")){

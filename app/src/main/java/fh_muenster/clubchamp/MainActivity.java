@@ -18,10 +18,8 @@ import fh_muenster.webservices.AQLClubChampWebServiceServiceSoapBinding;
 import fh_muenster.webservices.AQLIServiceEvents;
 import fh_muenster.webservices.AQLOperationResult;
 
-/*
-    Von Carlo Eefting
-    Login Activity
-
+/**
+ * @author Carlo Eefting
  */
 public class MainActivity extends AppCompatActivity {
 
@@ -32,7 +30,10 @@ public class MainActivity extends AppCompatActivity {
 
     SharedPreferences pref;
 
-
+    /**
+     *
+     * @param savedInstanceState
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,11 +57,11 @@ public class MainActivity extends AppCompatActivity {
     }
     */
 
-/*
-    Von Carlo Eefting
-    Registrierungsbutton Methode
- */
 
+
+    /**
+     *
+     */
     public void setupRegi() {
         Button regis = (Button) findViewById(R.id.button_Regis);
 
@@ -76,16 +77,19 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-/*
-    Von Carlo Eefting
-    Registrierungsbutton Methode
- */
+    /**
+     *
+     * @throws Exception
+     */
     public void setupLogin()throws Exception{
 
 
 
         b.setOnClickListener(new View.OnClickListener() {
-
+            /**
+             *
+             * @param v
+             */
             @Override
             public void onClick(View v) {
 
@@ -104,10 +108,11 @@ public class MainActivity extends AppCompatActivity {
 
         });
     }
-/*
-    Von Carlo Eefting
-    Asynchroner Login Methoden aufruf aus dem Webservice
- */
+
+    /**
+     * @author Carlo Eefting
+     *
+     */
     class LoginAsync extends AsyncTask<String, String, String> {
 
         private String email = emailLogin.getText().toString();
@@ -118,6 +123,11 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+        /**
+         *
+         * @param strings
+         * @return
+         */
         @Override
         protected String doInBackground(String... strings) {
             try {
@@ -135,6 +145,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+        /**
+         *
+         * @param result
+         */
           protected void onPostExecute(String result) {
             Log.i("LOG: ", result);
             if(result.equals(" ")){

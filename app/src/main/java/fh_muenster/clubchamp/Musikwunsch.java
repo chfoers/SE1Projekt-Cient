@@ -17,6 +17,9 @@ import android.widget.Toast;
 
 import fh_muenster.webservices.AQLClubChampWebServiceServiceSoapBinding;
 
+/**
+ * @author Carlo Eefting
+ */
 public class Musikwunsch extends AppCompatActivity {
 
     //private ArrayList<String> arrayList;
@@ -26,6 +29,10 @@ public class Musikwunsch extends AppCompatActivity {
     int r;
     SharedPreferences pref;
 
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +54,14 @@ public class Musikwunsch extends AppCompatActivity {
 
         setupWunsch();
     }
+
+
+
+    /**
+     *
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.menumain, menu);
@@ -58,6 +73,7 @@ public class Musikwunsch extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.item1 :
                 new LogoutAsync().execute();
+                finish();
 
                 break;
 
@@ -75,7 +91,9 @@ public class Musikwunsch extends AppCompatActivity {
         }
         return true;
     }
-
+    /**
+     *
+     */
     public void setupWunsch() {
         Button wunsch = (Button) findViewById(R.id.button_wabgeben);
 
@@ -100,6 +118,9 @@ public class Musikwunsch extends AppCompatActivity {
 
     }
 
+    /**
+     * @author Carlo Eefting
+     */
 
     class LogoutAsync extends AsyncTask<String, String, String> {
 
@@ -107,6 +128,12 @@ public class Musikwunsch extends AppCompatActivity {
         protected void onPreExecute() {
 
         }
+
+        /**
+         *
+         * @param strings
+         * @return
+         */
 
         @Override
         protected String doInBackground(String... strings) {
@@ -125,6 +152,10 @@ public class Musikwunsch extends AppCompatActivity {
             }
         }
 
+        /**
+         *
+         * @param result
+         */
 
         protected void onPostExecute(String result) {
             Log.i("LOG: ", result);
@@ -142,6 +173,10 @@ public class Musikwunsch extends AppCompatActivity {
             }
         }
     }
+
+    /**
+     * @author Carlo Eefting
+     */
     class RatingAsync extends AsyncTask<Void, Void, Void> {
 
         @Override
@@ -149,6 +184,11 @@ public class Musikwunsch extends AppCompatActivity {
 
         }
 
+        /**
+         *
+         * @param voids
+         * @return
+         */
         @Override
         protected Void doInBackground(Void... voids) {
             try {
@@ -175,6 +215,10 @@ public class Musikwunsch extends AppCompatActivity {
 
         }
     }
+
+    /**
+     * @author Carlo Eefting
+     */
     class WunschAsync extends AsyncTask<String, String, String> {
 
         private String l = lied.getText().toString();
@@ -184,6 +228,11 @@ public class Musikwunsch extends AppCompatActivity {
 
         }
 
+        /**
+         *
+         * @param strings
+         * @return
+         */
         @Override
         protected String doInBackground(String... strings) {
             try {
@@ -201,7 +250,10 @@ public class Musikwunsch extends AppCompatActivity {
             }
         }
 
-
+        /**
+         *
+         * @param result
+         */
         protected void onPostExecute(String result) {
             Log.i("LOG: ", result);
             if(result.equals(" ")){
