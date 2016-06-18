@@ -60,9 +60,9 @@ public class Musikwunsch extends AppCompatActivity {
                 new LogoutAsync().execute();
 
                 break;
-            case R.id.item2 :
-                startActivity(new Intent (Musikwunsch.this, User.class));
 
+            case R.id.item3 :
+                Toast.makeText(Musikwunsch.this,"Du bist bereits auf der Seite", Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.item4 :
@@ -154,7 +154,7 @@ public class Musikwunsch extends AppCompatActivity {
             try {
                 AQLClubChampWebServiceServiceSoapBinding service = new AQLClubChampWebServiceServiceSoapBinding();
                 try {
-                    service.clubBewerten( pref.getString("Session",null), r);
+                    service.clubBewerten(r,pref.getString("Session",null));
 
 
                 } catch (Exception e) {

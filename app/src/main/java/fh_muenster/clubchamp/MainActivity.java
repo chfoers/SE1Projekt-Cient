@@ -18,7 +18,11 @@ import fh_muenster.webservices.AQLClubChampWebServiceServiceSoapBinding;
 import fh_muenster.webservices.AQLIServiceEvents;
 import fh_muenster.webservices.AQLOperationResult;
 
+/*
+    Von Carlo Eefting
+    Login Activity
 
+ */
 public class MainActivity extends AppCompatActivity {
 
     EditText emailLogin;
@@ -27,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     Button b;
 
     SharedPreferences pref;
+
 
 
     @Override
@@ -51,6 +56,10 @@ public class MainActivity extends AppCompatActivity {
     }
     */
 
+/*
+    Von Carlo Eefting
+    Registrierungsbutton Methode
+ */
 
     public void setupRegi() {
         Button regis = (Button) findViewById(R.id.button_Regis);
@@ -67,6 +76,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+/*
+    Von Carlo Eefting
+    Registrierungsbutton Methode
+ */
     public void setupLogin()throws Exception{
 
 
@@ -91,6 +104,10 @@ public class MainActivity extends AppCompatActivity {
 
         });
     }
+/*
+    Von Carlo Eefting
+    Asynchroner Login Methoden aufruf aus dem Webservice
+ */
     class LoginAsync extends AsyncTask<String, String, String> {
 
         private String email = emailLogin.getText().toString();
@@ -118,8 +135,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
-        protected void onPostExecute(String result) {
+          protected void onPostExecute(String result) {
             Log.i("LOG: ", result);
             if(result.equals(" ")){
 
@@ -129,7 +145,6 @@ public class MainActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = pref.edit();
                 sessionId = result;
                 editor.putString("Email", emailLogin.getText().toString());
-
                 editor.putString("Password", pwLogin.getText().toString());
                 editor.putString("Session",sessionId);
                 editor.commit();

@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -33,6 +35,7 @@ public class Musikliste extends AppCompatActivity {
         setContentView(R.layout.activity_musikliste);
         pref = getApplicationContext().getSharedPreferences("shared_preferences", 0);
         ListView wuensche = (ListView) findViewById(R.id.lvw);
+        //lvLike();
         String[] items = {};
         arrayList = new ArrayList<String>(Arrays.asList(items));
         adapter = new ArrayAdapter<String>(Musikliste.this, R.layout.activity_musikliste, R.id.txtv, arrayList);
@@ -44,6 +47,21 @@ public class Musikliste extends AppCompatActivity {
 
     }
 
+
+   /* private void lvLike() {
+        ListView lv = (ListView) findViewById(R.id.lvw);
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> adapter, View view, int position, long id) {
+                adapter.getItemIdAtPosition(position);
+
+                //new likenAsync().execute();
+
+            }
+        });
+    }
+*/
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menumain, menu);
@@ -58,8 +76,8 @@ public class Musikliste extends AppCompatActivity {
 
 
                 break;
-            case R.id.item2:
-                startActivity(new Intent(Musikliste.this, User.class));
+            case R.id.item4:
+                Toast.makeText(Musikliste.this,"Du bist bereits auf der Seite", Toast.LENGTH_SHORT).show();
 
                 break;
 
@@ -71,7 +89,46 @@ public class Musikliste extends AppCompatActivity {
         }
         return true;
     }
+    /*class likenAsync extends AsyncTask<Void, String, String> {
 
+
+        @Override
+        protected void onPreExecute() {
+
+        }
+
+        @Override
+        protected String doInBackground(Void... strings) {
+
+            try {
+                AQLClubChampWebServiceServiceSoapBinding service = new AQLClubChampWebServiceServiceSoapBinding();
+
+                try {
+                    String o = service.musikWuenscheAusgeben().toString();
+                    Log.i("LOGGING: ", o);
+                    return o;
+                } catch (Exception e) {
+                    return " ";
+                }
+            } catch (Exception e) {
+                return " ";
+            }
+
+        }
+
+
+        protected void onPostExecute(String result) {
+
+            Log.i("LOG: ", result);
+            if (result.equals(" ")) {
+
+            } else {
+
+            }
+
+
+        }
+    }*/
     class WuenscheAusgebenAsync extends AsyncTask<Void, String, String> {
 
 

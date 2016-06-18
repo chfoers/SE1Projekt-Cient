@@ -426,30 +426,15 @@ public class AQLClubChampWebServiceServiceSoapBinding
             }
         });
     }
-    
-    public String feedbackGeben(final String arg0,final String arg1,final String arg2,final String arg3 ) throws Exception
-    {
-/*This feature is available in Premium account, Check http://EasyWsdl.com/Payment/PremiumAccountDetails to see all benefits of Premium account*/
-        return null;    
-    }
-    
-    public android.os.AsyncTask< Void, Void, AQLOperationResult< String>> feedbackGebenAsync(final String arg0,final String arg1,final String arg2,final String arg3)
-    {
-        return executeAsync(new AQLFunctions.IFunc< String>() {
-            public String Func() throws Exception {
-                return feedbackGeben( arg0,arg1,arg2,arg3);
-            }
-        });
-    }
 
-    public void clubBewerten(final String arg0,final Integer arg1 ) throws java.lang.Exception
+    public Boolean feedbackGeben(final String arg0,final Integer arg1,final String arg2,final String arg3 ) throws java.lang.Exception
     {
-        execute(new AQLIWcfMethod()
+        return (Boolean)execute(new AQLIWcfMethod()
         {
             @Override
             public AQLExtendedSoapSerializationEnvelope CreateSoapEnvelope(){
                 AQLExtendedSoapSerializationEnvelope __envelope = createEnvelope();
-                SoapObject __soapReq = new SoapObject("http://clubchamp.gruppe10/", "clubBewerten");
+                SoapObject __soapReq = new SoapObject("http://clubchamp.gruppe10/", "feedbackGeben");
                 __envelope.setOutputSoapObject(__soapReq);
 
                 PropertyInfo __info=null;
@@ -465,6 +450,70 @@ public class AQLClubChampWebServiceServiceSoapBinding
                 __info.type=PropertyInfo.INTEGER_CLASS;
                 __info.setValue(arg1);
                 __soapReq.addProperty(__info);
+                __info = new PropertyInfo();
+                __info.namespace="";
+                __info.name="arg2";
+                __info.type=PropertyInfo.STRING_CLASS;
+                __info.setValue(arg2!=null?arg2:SoapPrimitive.NullSkip);
+                __soapReq.addProperty(__info);
+                __info = new PropertyInfo();
+                __info.namespace="";
+                __info.name="arg3";
+                __info.type=PropertyInfo.STRING_CLASS;
+                __info.setValue(arg3!=null?arg3:SoapPrimitive.NullSkip);
+                __soapReq.addProperty(__info);
+                return __envelope;
+            }
+
+            @Override
+            public java.lang.Object ProcessResult(AQLExtendedSoapSerializationEnvelope __envelope,java.lang.Object __result)throws java.lang.Exception {
+                SoapObject __soap=(SoapObject)__result;
+                java.lang.Object obj = __soap.getProperty("return");
+                if (obj != null && obj.getClass().equals(SoapPrimitive.class))
+                {
+                    SoapPrimitive j =(SoapPrimitive) obj;
+                    return new Boolean(j.toString());
+                }
+                else if (obj!= null && obj instanceof Boolean){
+                    return (Boolean)obj;
+                }
+                return null;
+            }
+        },"");
+    }
+
+    public android.os.AsyncTask< Void, Void, AQLOperationResult< Boolean>> feedbackGebenAsync(final String arg0,final Integer arg1,final String arg2,final String arg3)
+    {
+        return executeAsync(new AQLFunctions.IFunc< Boolean>() {
+            public Boolean Func() throws java.lang.Exception {
+                return feedbackGeben( arg0,arg1,arg2,arg3);
+            }
+        });
+    }
+
+    public void clubBewerten(final Integer arg0,final String arg1 ) throws java.lang.Exception
+    {
+        execute(new AQLIWcfMethod()
+        {
+            @Override
+            public AQLExtendedSoapSerializationEnvelope CreateSoapEnvelope(){
+                AQLExtendedSoapSerializationEnvelope __envelope = createEnvelope();
+                SoapObject __soapReq = new SoapObject("http://clubchamp.gruppe10/", "clubBewerten");
+                __envelope.setOutputSoapObject(__soapReq);
+
+                PropertyInfo __info=null;
+                __info = new PropertyInfo();
+                __info.namespace="";
+                __info.name="arg0";
+                __info.type=PropertyInfo.INTEGER_CLASS;
+                __info.setValue(arg0!=null?arg0:SoapPrimitive.NullSkip);
+                __soapReq.addProperty(__info);
+                __info = new PropertyInfo();
+                __info.namespace="";
+                __info.name="arg1";
+                __info.type=PropertyInfo.STRING_CLASS;
+                __info.setValue(arg1);
+                __soapReq.addProperty(__info);
                 return __envelope;
             }
 
@@ -475,7 +524,7 @@ public class AQLClubChampWebServiceServiceSoapBinding
         },"");
     }
 
-    public android.os.AsyncTask< Void, Void, AQLOperationResult< Void>> clubBewertenAsync(final String arg0,final Integer arg1)
+    public android.os.AsyncTask< Void, Void, AQLOperationResult< Void>> clubBewertenAsync(final Integer arg0,final String arg1)
     {
         return executeAsync(new AQLFunctions.IFunc< Void>()
         {
