@@ -16,7 +16,9 @@ import org.ksoap2.serialization.*;
 import org.kxml2.kdom.Element;
 import org.kxml2.kdom.Node;
 
-
+/**
+ * @author easywsdl.com
+ */
 public class AQLHelper
 {
     public static < T, E> T getKeyByValue(java.util.Map< T, E> map, E value) {
@@ -28,6 +30,13 @@ public class AQLHelper
         return null;
     }
 
+    /**
+     *
+     * @param obj
+     * @param name
+     * @param namespace
+     * @return
+     */
     public static Object getAttribute(AttributeContainer obj,String name,String namespace)
     {
         for (int i=0;i < obj.getAttributeCount();i++){
@@ -41,6 +50,13 @@ public class AQLHelper
        return null;
     }
 
+    /**
+     *
+     * @param obj
+     * @param namespace
+     * @param name
+     * @return
+     */
     public static Element convertToHeader(Object obj,String namespace,String name)
     {
         org.kxml2.kdom.Element parentElement = new org.kxml2.kdom.Element().createElement(namespace,name);
@@ -76,6 +92,12 @@ public class AQLHelper
         return parentElement;
     }
 
+    /**
+     *
+     * @param name
+     * @param envelope
+     * @return
+     */
     public static Element findOutHeader(String name,SoapSerializationEnvelope envelope)
     {
         if(envelope.headerIn==null)
@@ -90,6 +112,11 @@ public class AQLHelper
         return null;
     }
 
+    /**
+     *
+     * @param element
+     * @return
+     */
     public static Object convertToSoapObject(Element element)
     {
 		if(element.getChildCount()==0 || (element.getChildCount()==1 && !(element.getChild(0) instanceof  Element)))
@@ -118,6 +145,12 @@ public class AQLHelper
 		    return obj;
 		}
 	}
+
+    /**
+     *
+     * @param strDate
+     * @return
+     */
     public static java.util.Date ConvertFromWebService(String strDate)
 	{
         String[] formats = new String[] {
@@ -141,6 +174,10 @@ public class AQLHelper
         return null;
     }
 
+    /**
+     *
+     * @return
+     */
     public static SimpleDateFormat getDateTimeFormat()
     {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.US);
@@ -148,14 +185,22 @@ public class AQLHelper
         return format;
     }
 
+    /**
+     *
+     * @return
+     */
     public static SimpleDateFormat getDateFormat()
     {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
         format.setTimeZone(java.util.TimeZone.getTimeZone("UTC"));
         return format;
     }
-    
 
+    /**
+     *
+     * @param str
+     * @return
+     */
     public static boolean isEmpty(CharSequence str) {
         if (str == null || str.length() == 0)
             return true;
@@ -163,6 +208,12 @@ public class AQLHelper
             return false;
     }
 
+    /**
+     *
+     * @param soapObject
+     * @param name
+     * @return
+     */
     public static ArrayList< PropertyInfo> getProperties(SoapObject soapObject,String name)
     {
         ArrayList< PropertyInfo> list = new ArrayList< PropertyInfo>();
@@ -179,7 +230,11 @@ public class AQLHelper
         }
         return list;
     }
-    
+
+    /**
+     *
+     * @return
+     */
     public static UUID emptyGuid()
     {
         return new UUID(0,0);

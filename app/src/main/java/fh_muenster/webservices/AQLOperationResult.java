@@ -10,7 +10,10 @@ package fh_muenster.webservices;
 //---------------------------------------------------
 
 
-
+/**
+ * @author easywsdl.com
+ * @param <T>
+ */
 public class AQLOperationResult< T>
 {
     public java.lang.Exception Exception;

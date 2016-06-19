@@ -263,7 +263,7 @@ public class Musikwunsch extends AppCompatActivity {
             else {
 
 
-                Toast.makeText(Musikwunsch.this,"Musik erfolgreich eingereicht", Toast.LENGTH_LONG).show();
+                Toast.makeText(Musikwunsch.this,result, Toast.LENGTH_LONG).show();
                 lied.setText("");
                 inter.setText("");
 

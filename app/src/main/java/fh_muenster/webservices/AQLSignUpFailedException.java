@@ -13,6 +13,9 @@ package fh_muenster.webservices;
 import java.util.Hashtable;
 import org.ksoap2.serialization.*;
 
+/**
+ * @author easywsdl.com
+ */
 public class AQLSignUpFailedException extends Exception implements KvmSerializable
 {
 
@@ -23,6 +26,11 @@ public class AQLSignUpFailedException extends Exception implements KvmSerializab
     {
     }
 
+    /**
+     *
+     * @param paramObj
+     * @param __envelope
+     */
     public AQLSignUpFailedException (Object paramObj,AQLExtendedSoapSerializationEnvelope __envelope)
     {
 	    
@@ -68,6 +76,11 @@ public class AQLSignUpFailedException extends Exception implements KvmSerializab
 
     }
 
+    /**
+     *
+     * @param propertyIndex
+     * @return
+     */
     @Override
     public Object getProperty(int propertyIndex) {
         //!!!!! If you have a compilation error here then you are using old version of ksoap2 library. Please upgrade to the latest version.
@@ -79,12 +92,21 @@ public class AQLSignUpFailedException extends Exception implements KvmSerializab
         return null;
     }
 
-
+    /**
+     *
+     * @return
+     */
     @Override
     public int getPropertyCount() {
         return 1;
     }
 
+    /**
+     *
+     * @param propertyIndex
+     * @param arg1
+     * @param info
+     */
     @Override
     public void getPropertyInfo(int propertyIndex, @SuppressWarnings("rawtypes") Hashtable arg1, PropertyInfo info)
     {
@@ -95,7 +117,12 @@ public class AQLSignUpFailedException extends Exception implements KvmSerializab
             info.namespace= "";
         }
     }
-    
+
+    /**
+     *
+     * @param arg0
+     * @param arg1
+     */
     @Override
     public void setProperty(int arg0, Object arg1)
     {

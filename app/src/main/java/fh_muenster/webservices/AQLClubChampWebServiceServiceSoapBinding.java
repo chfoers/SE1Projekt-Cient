@@ -24,7 +24,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- *
+ *@author Easywsdl & Carlo Eefting
  */
 public class AQLClubChampWebServiceServiceSoapBinding
 {
@@ -44,16 +44,33 @@ public class AQLClubChampWebServiceServiceSoapBinding
     AQLIServiceEvents callback;
     public AQLClubChampWebServiceServiceSoapBinding(){}
 
+    /**
+     *
+     * @param callback
+     */
+
     public AQLClubChampWebServiceServiceSoapBinding (AQLIServiceEvents callback)
     {
         this.callback = callback;
     }
+
+    /**
+     *
+     * @param callback
+     * @param url
+     */
     public AQLClubChampWebServiceServiceSoapBinding(AQLIServiceEvents callback,String url)
     {
         this.callback = callback;
         this.url = url;
     }
 
+    /**
+     *
+     * @param callback
+     * @param url
+     * @param timeOut
+     */
     public AQLClubChampWebServiceServiceSoapBinding(AQLIServiceEvents callback,String url,int timeOut)
     {
         this.callback = callback;
@@ -61,6 +78,10 @@ public class AQLClubChampWebServiceServiceSoapBinding
         this.timeOut=timeOut;
     }
 
+    /**
+     *
+     * @return
+     */
     protected org.ksoap2.transport.Transport createTransport()
     {
         try
@@ -82,13 +103,25 @@ public class AQLClubChampWebServiceServiceSoapBinding
         }
         return null;
     }
-    
+
+    /**
+     *
+     * @return
+     */
     protected AQLExtendedSoapSerializationEnvelope createEnvelope()
     {
         AQLExtendedSoapSerializationEnvelope envelope= new AQLExtendedSoapSerializationEnvelope(AQLExtendedSoapSerializationEnvelope.VER11);
         return envelope;
     }
-    
+
+    /**
+     *
+     * @param methodName
+     * @param envelope
+     * @param transport
+     * @return
+     * @throws Exception
+     */
     protected java.util.List sendRequest(String methodName,AQLExtendedSoapSerializationEnvelope envelope,org.ksoap2.transport.Transport transport  )throws Exception
     {
         return transport.call(methodName, envelope, httpHeaders);
@@ -131,7 +164,11 @@ public class AQLClubChampWebServiceServiceSoapBinding
        return null;
     }
 
-        
+    /**
+     *
+     * @return
+     * @throws Exception
+     */
     public AQLmusikWuenscheAusgebenResponse musikWuenscheAusgeben( ) throws Exception
     {
         return (AQLmusikWuenscheAusgebenResponse)execute(new AQLIWcfMethod()
@@ -152,7 +189,11 @@ public class AQLClubChampWebServiceServiceSoapBinding
             }
         },"");
     }
-    
+
+    /**
+     *
+     * @return
+     */
     public android.os.AsyncTask< Void, Void, AQLOperationResult< AQLmusikWuenscheAusgebenResponse>> musikWuenscheAusgebenAsync()
     {
         return executeAsync(new AQLFunctions.IFunc< AQLmusikWuenscheAusgebenResponse>() {
@@ -161,7 +202,15 @@ public class AQLClubChampWebServiceServiceSoapBinding
             }
         });
     }
-    
+
+    /**
+     *
+     * @param arg0
+     * @param arg1
+     * @param arg2
+     * @return
+     * @throws Exception
+     */
     public Boolean musikWurdeGespielt(final String arg0,final String arg1,final String arg2 ) throws Exception
     {
         return (Boolean)execute(new AQLIWcfMethod()
@@ -210,7 +259,14 @@ public class AQLClubChampWebServiceServiceSoapBinding
             }
         },"");
     }
-    
+
+    /**
+     *
+     * @param arg0
+     * @param arg1
+     * @param arg2
+     * @return
+     */
     public android.os.AsyncTask< Void, Void, AQLOperationResult< Boolean>> musikWurdeGespieltAsync(final String arg0,final String arg1,final String arg2)
     {
         return executeAsync(new AQLFunctions.IFunc< Boolean>() {
@@ -219,7 +275,15 @@ public class AQLClubChampWebServiceServiceSoapBinding
             }
         });
     }
-    
+
+    /**
+     *
+     * @param arg0
+     * @param arg1
+     * @param arg2
+     * @return
+     * @throws Exception
+     */
     public Boolean signUp(final String arg0,final String arg1,final String arg2 ) throws Exception
     {
         return (Boolean)execute(new AQLIWcfMethod()
@@ -268,7 +332,14 @@ public class AQLClubChampWebServiceServiceSoapBinding
             }
         },"");
     }
-    
+
+    /**
+     *
+     * @param arg0
+     * @param arg1
+     * @param arg2
+     * @return
+     */
     public android.os.AsyncTask< Void, Void, AQLOperationResult< Boolean>> signUpAsync(final String arg0,final String arg1,final String arg2)
     {
         return executeAsync(new AQLFunctions.IFunc< Boolean>() {
@@ -277,7 +348,14 @@ public class AQLClubChampWebServiceServiceSoapBinding
             }
         });
     }
-    
+
+    /**
+     *
+     * @param arg0
+     * @param arg1
+     * @return
+     * @throws Exception
+     */
     public String login(final String arg0,final String arg1 ) throws Exception
     {
         return (String)execute(new AQLIWcfMethod()
@@ -320,7 +398,13 @@ public class AQLClubChampWebServiceServiceSoapBinding
             }
         },"");
     }
-    
+
+    /**
+     *
+     * @param arg0
+     * @param arg1
+     * @return
+     */
     public android.os.AsyncTask< Void, Void, AQLOperationResult< String>> loginAsync(final String arg0,final String arg1)
     {
         return executeAsync(new AQLFunctions.IFunc< String>() {
@@ -329,7 +413,15 @@ public class AQLClubChampWebServiceServiceSoapBinding
             }
         });
     }
-    
+
+    /**
+     *
+     * @param arg0
+     * @param arg1
+     * @param arg2
+     * @return
+     * @throws Exception
+     */
     public String musikWuenschen(final String arg0,final String arg1,final String arg2 ) throws Exception
     {
         return (String)execute(new AQLIWcfMethod()
@@ -378,7 +470,14 @@ public class AQLClubChampWebServiceServiceSoapBinding
             }
         },"");
     }
-    
+
+    /**
+     *
+     * @param arg0
+     * @param arg1
+     * @param arg2
+     * @return
+     */
     public android.os.AsyncTask< Void, Void, AQLOperationResult< String>> musikWuenschenAsync(final String arg0,final String arg1,final String arg2)
     {
         return executeAsync(new AQLFunctions.IFunc< String>() {
@@ -388,7 +487,11 @@ public class AQLClubChampWebServiceServiceSoapBinding
         });
     }
 
-
+    /**
+     *
+     * @return
+     * @throws Exception
+     */
     public String toStr( ) throws Exception
     {
         return (String)execute(new AQLIWcfMethod()
@@ -420,6 +523,10 @@ public class AQLClubChampWebServiceServiceSoapBinding
         },"");
     }
 
+    /**
+     *
+     * @return
+     */
     public android.os.AsyncTask< Void, Void, AQLOperationResult< String>> toStringAsync()
     {
         return executeAsync(new AQLFunctions.IFunc< String>() {
@@ -429,6 +536,15 @@ public class AQLClubChampWebServiceServiceSoapBinding
         });
     }
 
+    /**
+     *
+     * @param arg0
+     * @param arg1
+     * @param arg2
+     * @param arg3
+     * @return
+     * @throws java.lang.Exception
+     */
     public Boolean feedbackGeben(final String arg0,final Integer arg1,final String arg2,final String arg3 ) throws java.lang.Exception
     {
         return (Boolean)execute(new AQLIWcfMethod()
@@ -484,6 +600,14 @@ public class AQLClubChampWebServiceServiceSoapBinding
         },"");
     }
 
+    /**
+     *
+     * @param arg0
+     * @param arg1
+     * @param arg2
+     * @param arg3
+     * @return
+     */
     public android.os.AsyncTask< Void, Void, AQLOperationResult< Boolean>> feedbackGebenAsync(final String arg0,final Integer arg1,final String arg2,final String arg3)
     {
         return executeAsync(new AQLFunctions.IFunc< Boolean>() {
@@ -493,6 +617,12 @@ public class AQLClubChampWebServiceServiceSoapBinding
         });
     }
 
+    /**
+     *
+     * @param arg0
+     * @param arg1
+     * @throws java.lang.Exception
+     */
     public void clubBewerten(final Integer arg0,final String arg1 ) throws java.lang.Exception
     {
         execute(new AQLIWcfMethod()
@@ -526,6 +656,12 @@ public class AQLClubChampWebServiceServiceSoapBinding
         },"");
     }
 
+    /**
+     *
+     * @param arg0
+     * @param arg1
+     * @return
+     */
     public android.os.AsyncTask< Void, Void, AQLOperationResult< Void>> clubBewertenAsync(final Integer arg0,final String arg1)
     {
         return executeAsync(new AQLFunctions.IFunc< Void>()
@@ -537,7 +673,13 @@ public class AQLClubChampWebServiceServiceSoapBinding
             }
         }) ;
     }
-    
+
+    /**
+     *
+     * @param arg0
+     * @return
+     * @throws Exception
+     */
     public String logout(final String arg0 ) throws Exception
     {   return (String)execute(new AQLIWcfMethod()
     {
@@ -573,7 +715,12 @@ public class AQLClubChampWebServiceServiceSoapBinding
         }
     },"");
     }
-    
+
+    /**
+     *
+     * @param arg0
+     * @return
+     */
     public android.os.AsyncTask< Void, Void, AQLOperationResult< String>> logoutAsync(final String arg0)
     {
         return executeAsync(new AQLFunctions.IFunc< String>() {
@@ -582,13 +729,28 @@ public class AQLClubChampWebServiceServiceSoapBinding
             }
         });
     }
-    
+
+    /**
+     *
+     * @param arg0
+     * @param arg1
+     * @param arg2
+     * @return
+     * @throws Exception
+     */
     public String musikLiken(final String arg0,final String arg1,final String arg2 ) throws Exception
     {
 /*This feature is available in Premium account, Check http://EasyWsdl.com/Payment/PremiumAccountDetails to see all benefits of Premium account*/
         return null;    
     }
-    
+
+    /**
+     *
+     * @param arg0
+     * @param arg1
+     * @param arg2
+     * @return
+     */
     public android.os.AsyncTask< Void, Void, AQLOperationResult< String>> musikLikenAsync(final String arg0,final String arg1,final String arg2)
     {
         return executeAsync(new AQLFunctions.IFunc< String>() {
@@ -597,13 +759,24 @@ public class AQLClubChampWebServiceServiceSoapBinding
             }
         });
     }
-    
+
+    /**
+     *
+     * @param arg0
+     * @return
+     * @throws Exception
+     */
     public String clearMusicWunschliste(final String arg0 ) throws Exception
     {
 /*This feature is available in Premium account, Check http://EasyWsdl.com/Payment/PremiumAccountDetails to see all benefits of Premium account*/
         return null;    
     }
-    
+
+    /**
+     *
+     * @param arg0
+     * @return
+     */
     public android.os.AsyncTask< Void, Void, AQLOperationResult< String>> clearMusicWunschlisteAsync(final String arg0)
     {
         return executeAsync(new AQLFunctions.IFunc< String>() {
@@ -613,7 +786,13 @@ public class AQLClubChampWebServiceServiceSoapBinding
         });
     }
 
-    
+    /**
+     *
+     * @param wcfMethod
+     * @param methodName
+     * @return
+     * @throws Exception
+     */
     protected Object execute(AQLIWcfMethod wcfMethod,String methodName) throws Exception
     {
         org.ksoap2.transport.Transport __httpTransport=createTransport();
@@ -643,7 +822,13 @@ public class AQLClubChampWebServiceServiceSoapBinding
             return wcfMethod.ProcessResult(__envelope,__retObj);
         }
     }
-    
+
+    /**
+     *
+     * @param func
+     * @param <T>
+     * @return
+     */
     protected < T> android.os.AsyncTask< Void, Void, AQLOperationResult< T>>  executeAsync(final AQLFunctions.IFunc< T> func)
     {
         return new android.os.AsyncTask< Void, Void, AQLOperationResult< T>>()

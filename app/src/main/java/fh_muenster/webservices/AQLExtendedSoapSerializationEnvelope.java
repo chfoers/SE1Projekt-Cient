@@ -28,6 +28,9 @@ import java.util.Vector;
 import java.io.StringReader;
 import java.io.StringWriter;
 
+/**
+ * @author easywsdl.com
+ */
 public class AQLExtendedSoapSerializationEnvelope extends SoapSerializationEnvelope {
     static HashMap< String,Class> classNames = new HashMap< String, Class>();
     static {
@@ -44,6 +47,10 @@ public class AQLExtendedSoapSerializationEnvelope extends SoapSerializationEnvel
         this(SoapEnvelope.VER11);
     }
 
+    /**
+     *
+     * @param soapVersion
+     */
     public AQLExtendedSoapSerializationEnvelope(int soapVersion) {
         super(soapVersion);
         implicitTypes = true;
@@ -52,8 +59,14 @@ public class AQLExtendedSoapSerializationEnvelope extends SoapSerializationEnvel
         new MarshalFloat().register(this);
     }
 
-    
 
+    /**
+     *
+     * @param writer
+     * @param obj
+     * @param type
+     * @throws IOException
+     */
     @Override
     protected void writeProperty(XmlSerializer writer, Object obj, PropertyInfo type) throws IOException {
         //!!!!! If you have a compilation error here then you are using old version of ksoap2 library. Please upgrade to the latest version.
@@ -104,6 +117,14 @@ public class AQLExtendedSoapSerializationEnvelope extends SoapSerializationEnvel
             super.writeProperty(writer, obj, type);
         }
     }
+
+    /**
+     *
+     * @param detailElement
+     * @param exceptionElementNS
+     * @param exceptionElementName
+     * @return
+     */
     public SoapObject GetExceptionDetail(Element detailElement,String exceptionElementNS,String exceptionElementName)
     {
         int index=detailElement.indexOf(exceptionElementNS,exceptionElementName,0);
@@ -115,6 +136,11 @@ public class AQLExtendedSoapSerializationEnvelope extends SoapSerializationEnvel
         return null;
     }
 
+    /**
+     *
+     * @param detailElement
+     * @return
+     */
     public SoapObject GetSoapObject(Element detailElement) {
         try{
             XmlSerializer xmlSerializer = XmlPullParserFactory.newInstance().newSerializer();
@@ -139,6 +165,11 @@ public class AQLExtendedSoapSerializationEnvelope extends SoapSerializationEnvel
         return null;
     }
 
+    /**
+     *
+     * @param detailElement
+     * @return
+     */
     public Object GetHeader(Element detailElement) {
         if(detailElement.getText(0)!=null)
         {
@@ -148,7 +179,13 @@ public class AQLExtendedSoapSerializationEnvelope extends SoapSerializationEnvel
     
         return GetSoapObject(detailElement);
     }
-    
+
+    /**
+     *
+     * @param soap
+     * @param cl
+     * @return
+     */
     public Object get(Object soap,Class cl)
     {
         if(soap==null)

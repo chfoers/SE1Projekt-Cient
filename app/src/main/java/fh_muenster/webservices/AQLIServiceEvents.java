@@ -10,7 +10,9 @@ package fh_muenster.webservices;
 //---------------------------------------------------
 
 
-
+/**
+ * @author easywsdl.com
+ */
 public interface AQLIServiceEvents
 {
     public void Starting();

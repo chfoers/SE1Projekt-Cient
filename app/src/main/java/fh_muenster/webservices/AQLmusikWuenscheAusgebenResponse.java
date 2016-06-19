@@ -15,12 +15,19 @@ import org.ksoap2.serialization.*;
 import java.util.Vector;
 import java.util.Hashtable;
 
-
+/**
+ * @author easywsdl.com
+ */
 public class AQLmusikWuenscheAusgebenResponse extends Vector< String> implements KvmSerializable
 {
     
     public AQLmusikWuenscheAusgebenResponse(){}
-    
+
+    /**
+     *
+     * @param inObj
+     * @param __envelope
+     */
     public AQLmusikWuenscheAusgebenResponse(Object inObj,AQLExtendedSoapSerializationEnvelope __envelope)
     {
         if (inObj == null)
@@ -38,24 +45,44 @@ public class AQLmusikWuenscheAusgebenResponse extends Vector< String> implements
             }
         }
 }
-    
+
+    /**
+     *
+     * @param arg0
+     * @return
+     */
     @Override
     public Object getProperty(int arg0) {
         return this.get(arg0)!=null?this.get(arg0):SoapPrimitive.NullNilElement;
     }
-    
+
+    /**
+     *
+     * @return
+     */
     @Override
     public int getPropertyCount() {
         return this.size();
     }
-    
+
+    /**
+     *
+     * @param index
+     * @param arg1
+     * @param info
+     */
     @Override
     public void getPropertyInfo(int index, @SuppressWarnings("rawtypes") Hashtable arg1, PropertyInfo info) {
         info.name = "return";
         info.type = PropertyInfo.STRING_CLASS;
     	info.namespace= "";
     }
-    
+
+    /**
+     *
+     * @param arg0
+     * @param arg1
+     */
     @Override
     public void setProperty(int arg0, Object arg1) {
     }

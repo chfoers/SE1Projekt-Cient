@@ -9,7 +9,9 @@ package fh_muenster.webservices;
 //
 //---------------------------------------------------
 
-
+/**
+ * @author easyesdl.com
+ */
 public class AQLFunctions
 {
     public interface IFunc< Res>

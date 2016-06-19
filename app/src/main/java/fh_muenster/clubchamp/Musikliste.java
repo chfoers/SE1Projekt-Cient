@@ -22,6 +22,7 @@ import fh_muenster.webservices.AQLClubChampWebServiceServiceSoapBinding;
 import fh_muenster.webservices.AQLmusikWuenscheAusgebenResponse;
 
 /**
+ * Ausgeben der Musikliste
  * @author Carlo Eefting
  */
 public class Musikliste extends AppCompatActivity {
@@ -71,7 +72,7 @@ public class Musikliste extends AppCompatActivity {
 
     /**
      *
-     *
+     * Menü angelegt
      * @param menu
      * @return
      */

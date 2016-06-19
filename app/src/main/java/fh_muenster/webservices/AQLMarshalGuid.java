@@ -21,19 +21,41 @@ import org.xmlpull.v1.XmlSerializer;
 import java.io.IOException;
 import java.util.UUID;
 
-
+/**
+ * @author easywsdl.com
+ */
 public class AQLMarshalGuid implements Marshal
 {
+    /**
+     *
+     * @param parser
+     * @param namespace
+     * @param name
+     * @param expected
+     * @return
+     * @throws IOException
+     * @throws XmlPullParserException
+     */
     public Object readInstance(XmlPullParser parser, String namespace, String name,PropertyInfo expected) throws IOException, XmlPullParserException
     {
         return UUID.fromString(parser.nextText());
     }
 
+    /**
+     *
+     * @param cm
+     */
     public void register(SoapSerializationEnvelope cm)
     {
         cm.addMapping(cm.xsd, "guid", UUID.class, this);
     }
 
+    /**
+     *
+     * @param writer
+     * @param obj
+     * @throws IOException
+     */
     public void writeInstance(XmlSerializer writer, Object obj) throws IOException
     {
         writer.text(obj.toString());

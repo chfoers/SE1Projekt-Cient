@@ -19,6 +19,7 @@ import fh_muenster.webservices.AQLIServiceEvents;
 import fh_muenster.webservices.AQLOperationResult;
 
 /**
+ * LoginActivity
  * @author Carlo Eefting
  */
 public class MainActivity extends AppCompatActivity {
@@ -60,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     /**
-     *
+     * Setup Registrierbutton
      */
     public void setupRegi() {
         Button regis = (Button) findViewById(R.id.button_Regis);
@@ -78,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * Setup Loginbutton. ruft den AsyncTask für login auf.
      * @throws Exception
      */
     public void setupLogin()throws Exception{
@@ -110,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
+     * ruft die Methode login aus dem Webservice auf.
      * @author Carlo Eefting
      *
      */
