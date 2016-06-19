@@ -208,7 +208,7 @@ public class Musikliste extends AppCompatActivity {
          * @param result
          */
         private void dMusic(String result) {
-            String[] re = result.split(", Music ");
+            String[] re = result.split(", ");
 
             for (int i = 0; i < re.length; i++) {
                 arrayList.add(re[i]);
